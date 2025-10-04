@@ -269,7 +269,6 @@ const HomePage = () => {
                       <service.icon className="w-7 h-7 text-white" />
                     </div>
                     <CardTitle className="text-xl text-blue-900 mb-3">{service.title}</CardTitle>
-                    <CardDescription className="text-gray-600 mb-4 leading-relaxed text-sm">{service.description}</CardDescription>
                     <div className="space-y-2">
                       {service.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center gap-2">
@@ -620,13 +619,11 @@ const HomePage = () => {
   return (
     <div className="pt-32">
       {/* Hero Section */}
-      <section className="pb-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white relative overflow-hidden">
+      <section className="pb-12 sm:pb-16 lg:pb-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white relative overflow-hidden">
         {/* Simplified Floating Bubbles Animation */}
         <div className="absolute inset-0 opacity-30">
           <svg className="w-full h-full" viewBox="0 0 1400 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-            {/* Slow floating bubbles across the screen */}
             <g>
-              {/* Row 1 - Top bubbles */}
               <circle r="6" fill="#60A5FA" opacity="0.6">
                 <animateMotion dur="25s" repeatCount="indefinite" 
                               path="M-50 100 L1450 120" />
@@ -645,8 +642,6 @@ const HomePage = () => {
                 <animate attributeName="opacity" values="0;0.7;0.5;0.7;0" dur="30s" repeatCount="indefinite" begin="6s" />
                 <animate attributeName="r" values="5;9;5;7;5" dur="30s" repeatCount="indefinite" begin="6s" />
               </circle>
-
-              {/* Row 2 - Middle bubbles */}
               <circle r="7" fill="#F59E0B" opacity="0.5">
                 <animateMotion dur="32s" repeatCount="indefinite" 
                               path="M-50 250 L1450 280" />
@@ -665,8 +660,6 @@ const HomePage = () => {
                 <animate attributeName="opacity" values="0;0.6;0.4;0.6;0" dur="35s" repeatCount="indefinite" begin="8s" />
                 <animate attributeName="r" values="6;10;6;8;6" dur="35s" repeatCount="indefinite" begin="8s" />
               </circle>
-
-              {/* Row 3 - Bottom bubbles */}
               <circle r="8" fill="#22D3EE" opacity="0.5">
                 <animateMotion dur="29s" repeatCount="indefinite" 
                               path="M-50 450 L1450 480" />
@@ -685,8 +678,6 @@ const HomePage = () => {
                 <animate attributeName="opacity" values="0;0.4;0.2;0.4;0" dur="33s" repeatCount="indefinite" begin="7s" />
                 <animate attributeName="r" values="7;11;7;9;7" dur="33s" repeatCount="indefinite" begin="7s" />
               </circle>
-
-              {/* Additional scattered bubbles for depth */}
               <circle r="4" fill="#60A5FA" opacity="0.3">
                 <animateMotion dur="40s" repeatCount="indefinite" begin="10s"
                               path="M-50 180 L1450 200" />
@@ -709,92 +700,90 @@ const HomePage = () => {
           <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-blue-400 rounded-full animate-pulse"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 relative z-10 py-20">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-10">
-              <Badge variant="secondary" className="bg-white/10 text-white border-white/20">
-                <Award className="w-4 h-4 mr-2 text-blue-300" />
-                Pioneering Industrial Water & Waste Water Treatrment Solutions Since 2009 | ISO 9001:2015 Registered
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 relative z-10 py-12 sm:py-16 lg:py-20">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+            <div className="space-y-6 sm:space-y-8 lg:space-y-10">
+              <Badge variant="secondary" className="bg-white/10 text-white border-white/20 text-xs sm:text-sm lg:text-base">
+                <Award className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-blue-300" />
+                <span className="hidden md:inline">Pioneering Industrial Water & Waste Water Treatment Solutions Since 2009 | ISO 9001:2015 Registered</span>
+                <span className="md:hidden">ISO 9001:2015 Since 2009</span>
               </Badge>
               
-              <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight">
                 CHEMTECH
                 <span className="block text-blue-300">Water Technologies</span>
-                <span className="block text-3xl lg:text-4xl mt-4 text-blue-200">& Solutions (India) Pvt Ltd</span>
+                <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-3 sm:mt-4 text-blue-200">& Solutions (India) Pvt Ltd</span>
               </h1>
               
-              <p className="text-xl text-blue-100 leading-relaxed max-w-2xl">
-                We provide complete, customized solutions for Industrial Water, Wastewater, and Sewage Treatment Plants. From design, fabrication to erection & commissioning, we deliver fully integrated turnkey projects.
+              <div className="space-y-3 sm:space-y-4">
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-100 leading-relaxed">
+                  We provide complete, customized solutions for Industrial Water, Wastewater, and Sewage Treatment Plants. From design, fabrication to erection & commissioning, we deliver fully integrated turnkey projects.
                 </p>
-              <p className="text-xl text-blue-100 leading-relaxed max-w-2xl">
-Our state-of-the-art Water Treatment Specialty Chemicals Manufacturing Unit ensures reliable supply of chemicals, equipment & spares to customers across Pan India.     </p>
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-100 leading-relaxed">
+                  Our state-of-the-art Water Treatment Specialty Chemicals Manufacturing Unit ensures reliable supply of chemicals, equipment & spares to customers across Pan India.
+                </p>
+              </div>
             </div>
             
             <div className="relative">
-              <div className="space-y-6">
-                {/* 100+ Installations */}
-                <div className="bg-gradient-to-r from-teal-400 to-blue-500 rounded-full flex items-center p-4 shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
-                  {/* Water ripple effect */}
+              <div className="space-y-3 sm:space-y-4 lg:space-y-6">
+                <div className="bg-gradient-to-r from-teal-400 to-blue-500 rounded-full flex items-center p-3 sm:p-4 shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
                   <div className="absolute inset-0 bg-white opacity-10 rounded-full animate-ping"></div>
-                  <div className="flex-1 pl-4 relative z-10">
-                    <h3 className="text-xl font-bold text-white mb-1">50 +</h3>
-                    <p className="text-white/90 text-sm font-medium">INSTALLATIONS</p>
+                  <div className="flex-1 pl-3 sm:pl-4 relative z-10 min-w-0">
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-1">50 +</h3>
+                    <p className="text-white/90 text-xs sm:text-sm font-medium">INSTALLATIONS</p>
                     <p className="text-white/80 text-xs">ACROSS PAN INDIA</p>
                   </div>
-                  <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30 relative z-10">
-                    <Factory className="w-8 h-8 text-white" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30 relative z-10 flex-shrink-0">
+                    <Factory className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
                   </div>
                 </div>
 
-                {/* Adding New Clients */}
-                <div className="bg-gradient-to-r from-red-400 to-pink-500 rounded-full flex items-center p-4 shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
+                <div className="bg-gradient-to-r from-red-400 to-pink-500 rounded-full flex items-center p-3 sm:p-4 shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
                   <div className="absolute inset-0 bg-white opacity-10 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
-                  <div className="flex-1 pl-4 relative z-10">
-                    <h3 className="text-xl font-bold text-white mb-1">ADDING OF NEW CLIENTS</h3>
-                    <p className="text-white/90 text-sm font-medium">EVERY YEAR</p>
+                  <div className="flex-1 pl-3 sm:pl-4 relative z-10 min-w-0">
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-1">ADDING OF NEW CLIENTS</h3>
+                    <p className="text-white/90 text-xs sm:text-sm font-medium">EVERY YEAR</p>
                     <p className="text-white/80 text-xs">UPTO 1.5 TIMES</p>
                   </div>
-                  <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30 relative z-10">
-                    <TrendingUp className="w-8 h-8 text-white" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30 relative z-10 flex-shrink-0">
+                    <TrendingUp className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
                   </div>
                 </div>
 
-                {/* Successfully Commissioned Plants */}
-                <div className="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center p-4 shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
+                <div className="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center p-3 sm:p-4 shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
                   <div className="absolute inset-0 bg-white opacity-10 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
-                  <div className="flex-1 pl-4 relative z-10">
-                    <h3 className="text-xl font-bold text-white mb-1">SUCCESSFULLY</h3>
-                    <p className="text-white/90 text-sm font-medium">COMMISSIONED PLANTS</p>
+                  <div className="flex-1 pl-3 sm:pl-4 relative z-10 min-w-0">
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-1">SUCCESSFULLY</h3>
+                    <p className="text-white/90 text-xs sm:text-sm font-medium">COMMISSIONED PLANTS</p>
                     <p className="text-white/80 text-xs">1600 + KLD</p>
                   </div>
-                  <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30 relative z-10">
-                    <Settings className="w-8 h-8 text-white" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30 relative z-10 flex-shrink-0">
+                    <Settings className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
                   </div>
                 </div>
 
-                {/* Experienced Team */}
-                <div className="bg-gradient-to-r from-purple-400 to-purple-600 rounded-full flex items-center p-4 shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
+                <div className="bg-gradient-to-r from-purple-400 to-purple-600 rounded-full flex items-center p-3 sm:p-4 shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
                   <div className="absolute inset-0 bg-white opacity-10 rounded-full animate-ping" style={{ animationDelay: '1.5s' }}></div>
-                  <div className="flex-1 pl-4 relative z-10">
-                    <h3 className="text-xl font-bold text-white mb-1">EXPERIENCED TEAM</h3>
-                    <p className="text-white/90 text-sm font-medium">WITH STRONG</p>
+                  <div className="flex-1 pl-3 sm:pl-4 relative z-10 min-w-0">
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-1">EXPERIENCED TEAM</h3>
+                    <p className="text-white/90 text-xs sm:text-sm font-medium">WITH STRONG</p>
                     <p className="text-white/80 text-xs">TECHNICAL KNOW-HOW</p>
                   </div>
-                  <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30 relative z-10">
-                    <Users className="w-8 h-8 text-white" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30 relative z-10 flex-shrink-0">
+                    <Users className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
                   </div>
                 </div>
 
-                {/* Specialized Services */}
-                <div className="bg-gradient-to-r from-indigo-500 to-purple-700 rounded-full flex items-center p-4 shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
+                <div className="bg-gradient-to-r from-indigo-500 to-purple-700 rounded-full flex items-center p-3 sm:p-4 shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
                   <div className="absolute inset-0 bg-white opacity-10 rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
-                  <div className="flex-1 pl-4 relative z-10">
-                    <h3 className="text-xl font-bold text-white mb-1">SPECIALIZED IN</h3>
-                    <p className="text-white/90 text-sm font-medium">WTP, STP, ETP, UF & RO</p>
+                  <div className="flex-1 pl-3 sm:pl-4 relative z-10 min-w-0">
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-1">SPECIALIZED IN</h3>
+                    <p className="text-white/90 text-xs sm:text-sm font-medium">WTP, STP, ETP, UF & RO</p>
                     <p className="text-white/80 text-xs">ZLD CLIENTS</p>
                   </div>
-                  <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30 relative z-10">
-                    <Droplets className="w-8 h-8 text-white" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30 relative z-10 flex-shrink-0">
+                    <Droplets className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
                   </div>
                 </div>
               </div>
