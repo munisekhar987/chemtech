@@ -184,10 +184,10 @@ const ContactPage = () => {
                   <div>
                     <h4 className="font-semibold text-sky-900 mb-2">Corporate Headquarters</h4>
                     <p className="text-slate-600 leading-relaxed">
-                      No: 1-1, Chemtech Towers<br />
-                      Krishna Nagar, Near Mandapam<br />
-                      Nagari, Chittoor - 517501<br />
-                      Andhra Pradesh, India
+                      Chemtech Water Technologies & Solutions India Pvt Ltd<br />
+                      Nagari, Chittoor District<br />
+                      Andhra Pradesh - 517501<br />
+                      India
                     </p>
                   </div>
                 </div>
@@ -226,14 +226,14 @@ const ContactPage = () => {
               <h3 className="text-3xl font-bold text-sky-900 mb-8">Find Us on Map</h3>
               <div className="bg-gray-100 rounded-2xl overflow-hidden shadow-lg h-96">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3884.585!2d79.58666667573242!3d13.318888887085938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4d4b7c1234abcd%3A0x1234567890abcdef!2sKrishna%20Nagar%2C%20Nagari%2C%20Chittoor%20-%20517501%2C%20Andhra%20Pradesh%2C%20India!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.8839147773855!2d79.5850316!3d13.3339724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4a75446bed41cb%3A0x2dc4a0e6e10fb8f2!2sChemtech%20Water%20Technologies%20%26%20Solutions%20India%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Chemtech Water Technologies - Krishna Nagar, Nagari"
+                  title="Chemtech Water Technologies & Solutions India Pvt Ltd - Nagari, Chittoor"
                   className="rounded-2xl"
                 ></iframe>
               </div>
@@ -242,8 +242,8 @@ const ContactPage = () => {
               <div className="mt-4 p-4 bg-blue-50 rounded-lg">
                 <p className="text-sm text-blue-800 font-medium mb-2">Directions to Our Office:</p>
                 <p className="text-sm text-blue-700">
-                  Located in Krishna Nagar, Nagari - easily accessible from Chittoor and surrounding areas. 
-                  Free parking available on premises.
+                  Located in Nagari, Chittoor District, Andhra Pradesh - easily accessible from major highways. 
+                  Ample parking space available on premises.
                 </p>
               </div>
             </div>

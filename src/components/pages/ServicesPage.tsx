@@ -6,165 +6,282 @@ import {
   Beaker,
   Factory,
   Settings,
-  Shield,
   Wrench,
-  FlaskConical,
-  Building2,
   ChevronDown,
-  ChevronRight,
-  Plus,
-  Minus
+  ChevronRight
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 
 const FlowchartServicesPage = () => {
-  const [expandedSubsections, setExpandedSubsections] = useState({});
+  const [activeDivision, setActiveDivision] = useState('chemical');
+  const [expandedSections, setExpandedSections] = useState({});
+  const [expandedSubSections, setExpandedSubSections] = useState({});
 
-  const toggleSubsection = (subsectionId) => {
-    setExpandedSubsections(prev => ({
+  const toggleSection = (sectionId) => {
+    setExpandedSections(prev => ({
       ...prev,
-      [subsectionId]: !prev[subsectionId]
+      [sectionId]: !prev[sectionId]
     }));
   };
 
-  const servicesData = [
-    {
+  const toggleSubSection = (subSectionId) => {
+    setExpandedSubSections(prev => ({
+      ...prev,
+      [subSectionId]: !prev[subSectionId]
+    }));
+  };
+
+  const navigateToProduct = (productName) => {
+    const productId = productName.toLowerCase()
+      .replace(/[^a-z0-9\s]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/--+/g, '-');
+    window.location.href = `/products#${productId}`;
+  };
+
+  const divisionsData = {
+    chemical: {
       id: 'chemical',
       title: 'Chemical Division',
       icon: Beaker,
-      // description: 'Manufacturing specialty formulations for multiple industrial applications',
       color: 'from-green-500 to-emerald-500',
-      subsections: [
+      sections: [
         {
-          id: 'ro-antiscale',
-          title: 'RO Antiscale Solutions',
-          products: [
-            { name: 'ChemScale Guard Pro', description: 'Premium antiscalant for industrial RO systems' },
-            { name: 'AquaShield AS-200', description: 'High-performance scale inhibitor for harsh water conditions' },
-            { name: 'ClearFlow Antiscale', description: 'Cost-effective scale prevention for municipal systems' }
+          id: 'water-treatment',
+          title: 'Water Treatment Chemicals',
+          subsections: [
+            {
+              id: 'raw-water',
+              title: 'Raw Water Purification Solutions',
+              products: ['Coagulants', 'Polymers']
+            },
+            {
+              id: 'ro-uf',
+              title: 'Membrane Protection & Performance',
+              products: [
+                'Antiscalants',
+                'Anti Oxidants',
+                'Micro Biocide & Preservatives',
+                'pH Booster and Mineral Additives (Food Grade)',
+                'Membrane Cleaning Chemicals'
+              ]
+            },
+            {
+              id: 'hardness-silica',
+              title: 'Scale Prevention Specialty',
+              products: ['Silikel']
+            }
           ]
         },
         {
-          id: 'ro-chemicals',
-          title: 'RO Treatment Chemicals',
-          products: [
-            { name: 'MemClean MC-100', description: 'Advanced membrane cleaning solution' },
-            { name: 'BioGuard RO', description: 'Biocide for RO system protection' },
-            { name: 'pH Stabilizer Pro', description: 'pH adjustment chemical for optimal RO performance' }
+          id: 'effluent-sewage',
+          title: 'Effluent & Sewage Treatment Chemicals',
+          subsections: [
+            {
+              id: 'effluent-products',
+              title: 'Complete Effluent Treatment Range',
+              products: [
+                'Coagulants',
+                'Flocculants',
+                'Bio-flocculants for Secondary Clarification',
+                'Aerobic & Anaerobic Culture Micronutrients',
+                'De-Colourants',
+                'De-Emulsifier',
+                'De-foamer',
+                'Sludge Dewatering Polymer',
+                'Chemoxy Super',
+                'Deodorant',
+                'Micronutrients for Aerobic & Anaerobic'
+              ]
+            }
           ]
         },
         {
-          id: 'boiler-chemicals',
-          title: 'Boiler & Cooling Tower Chemicals',
-          products: [
-            { name: 'SteamGuard BT-500', description: 'Complete boiler treatment solution' },
-            { name: 'CoolTower CT-300', description: 'Cooling tower water treatment chemical' },
-            { name: 'CorroStop Inhibitor', description: 'Corrosion prevention for industrial systems' }
+          id: 'cooling-water',
+          title: 'Cooling Water Treatment Chemicals',
+          subsections: [
+            {
+              id: 'cooling-products',
+              title: 'Cooling Tower Performance Solutions',
+              products: [
+                'Scale & Corrosion Inhibitor',
+                'pH Booster',
+                'Silica Dispersants',
+                'Oxidising Biocide',
+                'Non-Oxidising Biocide',
+                'Passivation Chemicals',
+                'De-Scaling Chemicals',
+                'De-Alkalizer',
+                'Pre-Cleaning Chemical'
+              ]
+            }
           ]
         },
         {
-          id: 'specialty-chemicals',
-          title: 'Specialty Treatment Chemicals',
-          products: [
-            { name: 'BioNutrient Plus', description: 'Micronutrient supplement for biological treatment' },
-            { name: 'FoamAway Defoamer', description: 'Industrial defoaming agent' },
-            { name: 'CoaguFloc Super', description: 'High-efficiency coagulant for water treatment' }
+          id: 'boiler-water',
+          title: 'Boiler Water Treatment Chemicals',
+          subsections: [
+            {
+              id: 'boiler-products',
+              title: 'Boiler Protection & Efficiency',
+              products: [
+                'Scale & Corrosion Chemicals',
+                'Sludge Conditioners',
+                'Oxygen Scavengers',
+                'pH Booster',
+                'New Boiler Precleaning Chemicals',
+                'Idle Boiler Preservatives',
+                'De-Scaling Chemicals',
+                'Phosphate Treatment Chemicals',
+                'Carbonate Treatment Chemicals',
+                'Morpholine Treatment Chemicals'
+              ]
+            }
           ]
         }
       ]
     },
-    {
+    plant: {
       id: 'plant',
       title: 'Plant Division',
       icon: Factory,
-      // description: 'Complete turnkey projects from design to commissioning',
       color: 'from-blue-500 to-cyan-500',
-      subsections: [
+      sections: [
         {
           id: 'ro-plants',
           title: 'Reverse Osmosis Plants',
-          products: [
-            { name: 'Industrial RO System 5000 LPH', description: 'High-capacity industrial reverse osmosis plant' },
-            { name: 'Compact RO Unit 500 LPH', description: 'Space-saving RO system for small industries' },
-            { name: 'Municipal RO Plant 50000 LPH', description: 'Large-scale municipal water treatment system' }
+          subsections: [
+            {
+              id: 'ro-systems',
+              title: 'Industrial to Municipal Scale RO',
+              products: [
+                'Industrial RO System 5000 LPH',
+                'Compact RO Unit 500 LPH',
+                'Municipal RO Plant 50000 LPH'
+              ]
+            }
           ]
         },
         {
           id: 'wtp-plants',
           title: 'Water Treatment Plants',
-          products: [
-            { name: 'UF Membrane System', description: 'Ultra-filtration system for water purification' },
-            { name: 'Iron Removal Plant', description: 'Complete iron and manganese removal system' },
-            { name: 'Softening Plant', description: 'Water softening system for industrial use' }
+          subsections: [
+            {
+              id: 'wtp-systems',
+              title: 'Advanced Filtration Systems',
+              products: [
+                'UF Membrane System',
+                'Iron Removal Plant',
+                'Softening Plant'
+              ]
+            }
           ]
         },
         {
           id: 'etp-plants',
           title: 'Effluent Treatment Plants',
-          products: [
-            { name: 'MBBR ETP System', description: 'Moving bed bio-reactor effluent treatment plant' },
-            { name: 'SBR Treatment Plant', description: 'Sequential batch reactor for industrial effluent' },
-            { name: 'MBR Technology Plant', description: 'Membrane bio-reactor for advanced treatment' }
+          subsections: [
+            {
+              id: 'etp-systems',
+              title: 'Biological Treatment Technologies',
+              products: [
+                'MBBR ETP System',
+                'SBR Treatment Plant',
+                'MBR Technology Plant'
+              ]
+            }
           ]
         },
         {
           id: 'stp-plants',
           title: 'Sewage Treatment Plants',
-          products: [
-            { name: 'ASP Sewage Plant', description: 'Activated sludge process sewage treatment system' },
-            { name: 'Packaged STP Unit', description: 'Pre-fabricated sewage treatment plant' },
-            { name: 'Decentralized STP', description: 'Modular sewage treatment for residential complexes' }
+          subsections: [
+            {
+              id: 'stp-systems',
+              title: 'Sewage Treatment Solutions',
+              products: [
+                'ASP Sewage Plant',
+                'Packaged STP Unit',
+                'Decentralized STP'
+              ]
+            }
           ]
         }
       ]
     },
-    {
+    maintenance: {
       id: 'maintenance',
-      title: 'Maintenance & Support',
+      title: 'Maintenance Division',
       icon: Wrench,
-      // description: 'Comprehensive maintenance and technical support services',
       color: 'from-purple-500 to-indigo-500',
-      subsections: [
+      sections: [
         {
-          id: 'operation-maintenance',
+          id: 'om-services',
           title: 'Operation & Maintenance',
-          products: [
-            { name: 'ETP O&M Services', description: 'Complete operation and maintenance of effluent plants' },
-            { name: 'STP Management', description: 'Full-service sewage treatment plant management' },
-            { name: 'WTP Operations', description: 'Water treatment plant operational support' }
+          subsections: [
+            {
+              id: 'om-products',
+              title: 'Professional O&M Services',
+              products: [
+                'ETP O&M Services',
+                'STP Management',
+                'WTP Operations'
+              ]
+            }
           ]
         },
         {
-          id: 'plant-upgrades',
+          id: 'upgrades',
           title: 'Plant Upgrades & Revamping',
-          products: [
-            { name: 'Efficiency Upgrade Package', description: 'Performance enhancement for existing plants' },
-            { name: 'Technology Modernization', description: 'Upgrading old systems with latest technology' },
-            { name: 'Capacity Enhancement', description: 'Expanding plant capacity and throughput' }
+          subsections: [
+            {
+              id: 'upgrade-products',
+              title: 'Modernization & Enhancement',
+              products: [
+                'Efficiency Upgrade Package',
+                'Technology Modernization',
+                'Capacity Enhancement'
+              ]
+            }
           ]
         },
         {
-          id: 'technical-services',
+          id: 'consultancy',
           title: 'Technical Consultancy',
-          products: [
-            { name: 'Water Audit Services', description: 'Comprehensive water usage and efficiency audit' },
-            { name: 'Process Optimization', description: 'Technical consultation for process improvement' },
-            { name: 'Troubleshooting Support', description: '24/7 technical problem-solving assistance' }
+          subsections: [
+            {
+              id: 'consultancy-products',
+              title: 'Expert Advisory Services',
+              products: [
+                'Water Audit Services',
+                'Process Optimization',
+                'Troubleshooting Support'
+              ]
+            }
           ]
         },
         {
-          id: 'spare-parts',
+          id: 'spares',
           title: 'Spare Parts & Components',
-          products: [
-            { name: 'RO Membrane Replacement', description: 'High-quality replacement membranes' },
-            { name: 'Pump & Motor Spares', description: 'Complete spare parts for pumping systems' },
-            { name: 'Control Panel Components', description: 'Electrical and automation spare parts' }
+          subsections: [
+            {
+              id: 'spare-products',
+              title: 'Quality Replacement Parts',
+              products: [
+                'RO Membrane Replacement',
+                'Pump & Motor Spares',
+                'Control Panel Components'
+              ]
+            }
           ]
         }
       ]
     }
-  ];
+  };
+
+  const toggleDivision = (divisionId) => {
+    setActiveDivision(activeDivision === divisionId ? null : divisionId);
+  };
 
   return (
     <div className="pt-32">
@@ -178,100 +295,125 @@ const FlowchartServicesPage = () => {
         <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
           <h1 className="text-5xl lg:text-6xl font-bold mb-6">Our Services</h1>
           <p className="text-xl text-blue-100 max-w-4xl mx-auto">
-            Over the years, we have developed expertise in offering highly effective water and waste water treatment chemicals and industrial process chemicals. This has been possible due to our strong commitment towards quality and state-of-the-art manufacturing and testing facilities. In order to streamline our manufacturing competency, we have developed following divisions.          </p>
+            Over the years, we have developed expertise in offering highly effective water and waste water treatment chemicals and industrial process chemicals. This has been possible due to our strong commitment towards quality and state-of-the-art manufacturing and testing facilities.
+          </p>
         </div>
       </section>
 
-      {/* Interactive Flowchart */}
+      {/* Divisions Section */}
       <section className="py-24 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4">
-          {/* Main CHEMTECH Title */}
-          <div className="flex flex-col items-center mb-20">
-            <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-12 py-8 rounded-3xl shadow-2xl mb-8">
-              <div className="flex items-center gap-4 justify-center">
-                {/* <Droplets className="w-12 h-12 text-white" /> */}
-                <h1 className="text-4xl font-bold">DIVISIONS</h1>
-              </div>
-              {/* <p className="text-blue-100 mt-2 text-center">Water Technologies & Solutions</p> */}
-            </div>
-            
-            {/* Connection Lines */}
-            <div className="relative">
-              {/* Main vertical line */}
-              <div className="w-1 h-16 bg-blue-400 mx-auto"></div>
-              {/* Horizontal line */}
-              <div className="w-full max-w-4xl h-1 bg-blue-400 relative mx-auto">
-                {/* Three vertical lines going down */}
-                <div className="absolute left-0 top-0 w-1 h-16 bg-blue-400"></div>
-                <div className="absolute left-1/2 top-0 w-1 h-16 bg-blue-400 transform -translate-x-1/2"></div>
-                <div className="absolute right-0 top-0 w-1 h-16 bg-blue-400"></div>
-              </div>
+          {/* Main DIVISIONS Title */}
+          <div className="flex flex-col items-center mb-12">
+            <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-12 py-8 rounded-3xl shadow-2xl">
+              <h1 className="text-4xl font-bold text-center">DIVISIONS</h1>
             </div>
           </div>
 
-          {/* Three Divisions in Single Row */}
+          {/* Three Division Cards Side by Side - Fixed Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {servicesData.map((section, sectionIndex) => (
-              <div key={section.id} className="relative">
-                {/* Division Card */}
-                <Card className="h-full shadow-lg hover:shadow-xl transition-all duration-300">
-                  {/* Division Header */}
-                  <CardHeader className={`bg-gradient-to-r ${section.color} text-white text-center`}>
+            {Object.values(divisionsData).map((division) => {
+              const Icon = division.icon;
+              
+              return (
+                <Card 
+                  key={division.id}
+                  className="flex flex-col"
+                  style={{ height: '600px' }}
+                >
+                  {/* Division Header - Fixed */}
+                  <CardHeader 
+                    className={`bg-gradient-to-r ${division.color} text-white text-center flex-shrink-0`}
+                  >
                     <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <section.icon className="w-8 h-8 text-white" />
+                      <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold">{section.title}</CardTitle>
-                    <p className="text-white/90 text-sm">{section.description}</p>
+                    <CardTitle className="text-2xl font-bold">{division.title}</CardTitle>
                   </CardHeader>
 
-                  {/* Always Visible Subsections */}
-                  <CardContent className="p-4">
+                  {/* Division Content - Scrollable */}
+                  <CardContent className="p-6 flex-1 overflow-y-auto">
                     <div className="space-y-3">
-                      {section.subsections.map((subsection, subIndex) => (
-                        <div key={subsection.id} className="border border-gray-200 rounded-lg overflow-hidden">
-                          {/* Subsection Title - Always Visible */}
+                      {division.sections.map((section) => (
+                        <div key={section.id} className="border-2 rounded-xl overflow-hidden shadow-sm" style={{ borderColor: '#bfdbfe' }}>
+                          {/* Section Header - Clickable */}
                           <div 
-                            className="bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer p-3"
-                            onClick={() => toggleSubsection(subsection.id)}
+                            className="p-4 cursor-pointer transition-all"
+                            style={{ backgroundColor: '#dbeafe' }}
+                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#bfdbfe'}
+                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#dbeafe'}
+                            onClick={() => toggleSection(section.id)}
                           >
                             <div className="flex items-center justify-between">
-                              <h3 className="text-sm font-semibold text-blue-900">{subsection.title}</h3>
-                              <div className="flex items-center gap-2">
-                                <span className="text-xs text-gray-600 bg-white px-2 py-1 rounded">
-                                  {subsection.products.length}
-                                </span>
-                                {expandedSubsections[subsection.id] ? 
-                                  <ChevronDown className="w-3 h-3 text-gray-600" /> : 
-                                  <ChevronRight className="w-3 h-3 text-gray-600" />
-                                }
-                              </div>
+                              <h3 className="text-lg flex items-center gap-3" style={{ color: '#1e3a8a' }}>
+                                <Droplets className="w-5 h-5" style={{ color: '#1e40af' }} />
+                                {section.title}
+                              </h3>
+                              {expandedSections[section.id] ? 
+                                <ChevronDown className="w-5 h-5" style={{ color: '#1e3a8a' }} /> : 
+                                <ChevronRight className="w-5 h-5" style={{ color: '#1e3a8a' }} />
+                              }
                             </div>
                           </div>
 
-                          {/* Products List - Hidden by Default */}
-                          {expandedSubsections[subsection.id] && (
-                            <div className="p-3 bg-white space-y-2">
-                              {subsection.products.map((product, productIndex) => (
-                                <div 
-                                  key={productIndex} 
-                                  className="bg-gradient-to-r from-blue-50 to-gray-50 rounded-lg p-3 border-l-4 border-blue-500 hover:shadow-md transition-shadow cursor-pointer"
-                                  onClick={() => {
-                                    // Convert product name to ID format and navigate to specific section
-                                    const productId = product.name.toLowerCase()
-                                      .replace(/[^a-z0-9\s]/g, '') // Remove special characters like &, -, etc.
-                                      .replace(/\s+/g, '-') // Replace spaces with hyphens
-                                      .replace(/--+/g, '-'); // Replace multiple hyphens with single hyphen
-                                    console.log('Navigating to:', `/products#${productId}`); // Debug log
-                                    window.location.href = `/products#${productId}`;
-                                  }}
-                                >
-                                  <div className="flex items-start gap-2">
-                                    <Droplets className="w-3 h-3 text-blue-500 flex-shrink-0 mt-1" />
-                                    <div>
-                                      <h4 className="font-semibold text-gray-800 mb-1 text-sm hover:text-blue-600 transition-colors">{product.name}</h4>
-                                      <p className="text-gray-600 text-xs leading-relaxed">{product.description}</p>
+                          {/* Subsections - Level 2 */}
+                          {expandedSections[section.id] && (
+                            <div className="p-4 bg-gray-50 space-y-3">
+                              {section.subsections.map((subsection) => (
+                                <div key={subsection.id} className="border rounded-lg overflow-hidden bg-white shadow-sm" style={{ borderColor: '#bfdbfe' }}>
+                                  {/* Subsection Header - Clickable */}
+                                  <div 
+                                    className="p-3 cursor-pointer transition-all"
+                                    style={{ backgroundColor: '#dbeafe' }}
+                                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#bfdbfe'}
+                                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#dbeafe'}
+                                    onClick={() => toggleSubSection(subsection.id)}
+                                  >
+                                    <div className="flex items-center justify-between">
+                                      <h4 className="text-base flex items-center gap-2" style={{ color: '#1e3a8a' }}>
+                                        <Droplets className="w-4 h-4" style={{ color: '#1e40af' }} />
+                                        {subsection.title}
+                                      </h4>
+                                      <div className="flex items-center gap-2">
+                                        <span className="text-xs px-2 py-1 rounded-full" style={{ backgroundColor: '#dbeafe', color: '#1e40af' }}>
+                                          {subsection.products.length}
+                                        </span>
+                                        {expandedSubSections[subsection.id] ? 
+                                          <ChevronDown className="w-4 h-4" style={{ color: '#1e40af' }} /> : 
+                                          <ChevronRight className="w-4 h-4" style={{ color: '#1e40af' }} />
+                                        }
+                                      </div>
                                     </div>
                                   </div>
+
+                                  {/* Products - Level 3 */}
+                                  {expandedSubSections[subsection.id] && (
+                                    <div className="p-3 bg-white space-y-2">
+                                      {subsection.products.map((product, idx) => (
+                                        <div 
+                                          key={idx}
+                                          className="p-3 rounded-lg border-l-4 transition-all cursor-pointer"
+                                          style={{ backgroundColor: '#dbeafe', borderLeftColor: '#3b82f6' }}
+                                          onMouseEnter={(e) => {
+                                            e.currentTarget.style.backgroundColor = '#bfdbfe';
+                                            e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+                                          }}
+                                          onMouseLeave={(e) => {
+                                            e.currentTarget.style.backgroundColor = '#dbeafe';
+                                            e.currentTarget.style.boxShadow = 'none';
+                                          }}
+                                          onClick={() => navigateToProduct(product)}
+                                        >
+                                          <div className="flex items-center gap-2">
+                                            <Droplets className="w-3 h-3 flex-shrink-0" style={{ color: '#1e40af' }} />
+                                            <span className="text-sm" style={{ color: '#1e3a8a' }}>
+                                              {product}
+                                            </span>
+                                          </div>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  )}
                                 </div>
                               ))}
                             </div>
@@ -281,13 +423,11 @@ const FlowchartServicesPage = () => {
                     </div>
                   </CardContent>
                 </Card>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
-
-
     </div>
   );
 };

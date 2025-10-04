@@ -22,14 +22,15 @@ import {
   Eye,
   Target,
   Shield,
-  FileText
+  FileText,
+  Handshake
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
 const HomePage = () => {
-  const [activeTab, setActiveTab] = useState('welcome');
+  const [activeTab, setActiveTab] = useState('About Us');
 
   const tabs = [
     { id: 'About Us', title: 'About Us', icon: Users },
@@ -38,7 +39,8 @@ const HomePage = () => {
     { id: 'industries', title: 'Industries We Serve', icon: Factory },
     { id: 'why-choose', title: 'Why Choose CHEMTECH', icon: Star },
     { id: 'certifications', title: 'Certifications', icon: Shield },
-    // { id: 'Testimonials', title: 'Testimonials', icon: FileText }
+    { id: 'our-team', title: 'Our Team', icon: Users },
+    { id: 'testimonials', title: 'Testimonials', icon: FileText }
   ];
 
   const TabButton = ({ tab, isActive, onClick }) => {
@@ -46,14 +48,14 @@ const HomePage = () => {
     return (
       <button
         onClick={() => onClick(tab.id)}
-        className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+        className={`flex items-center gap-1.5 px-3 py-2 rounded-lg font-semibold text-sm transition-all duration-300 ${
           isActive
             ? 'bg-blue-600 text-white shadow-lg'
             : 'bg-white text-blue-600 hover:bg-blue-50 border border-blue-200'
         }`}
       >
-        <Icon className="w-5 h-5" />
-        <span className="hidden md:inline">{tab.title}</span>
+        <Icon className="w-4 h-4" />
+        <span className="hidden lg:inline whitespace-nowrap">{tab.title}</span>
       </button>
     );
   };
@@ -138,7 +140,7 @@ const HomePage = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 {
-                  icon: Users,
+                  icon: Handshake,
                   title: "Customer Satisfaction",
                   description: "To achieve and maintain total Customer Satisfaction by providing on-time delivery of high-quality products and services to our esteemed customers",
                   bgColor: "bg-blue-400",
@@ -220,9 +222,6 @@ const HomePage = () => {
           <div className="space-y-8">
             <div className="text-center mb-12">
               <h3 className="text-3xl font-bold text-blue-900 mb-4">Our Core Services</h3>
-              {/* <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Comprehensive water treatment solutions designed, manufactured, and installed by our expert team
-              </p> */}
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8">
@@ -230,7 +229,7 @@ const HomePage = () => {
                 {
                   title: 'Industrial RO Plant',
                   features: ['Automated Operation', 'Modular Design', 'High Recovery Rate', 'Low Maintenance'],
-                  icon: Droplets,
+                  icon: Factory,
                   gradient: 'from-blue-500 to-cyan-500'
                 },
                 {
@@ -312,28 +311,6 @@ const HomePage = () => {
                 </div>
               ))}
             </div>
-
-            {/* <div className="mt-12 bg-gray-50 rounded-xl p-8">
-              <h4 className="text-2xl font-bold text-blue-900 mb-6 text-center">Specialized Solutions for Each Industry</h4>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  { title: "Custom Design", desc: "Tailored solutions for specific industry requirements" },
-                  { title: "Regulatory Compliance", desc: "Meeting all environmental and safety standards" },
-                  { title: "Scalable Systems", desc: "Solutions that grow with your business needs" },
-                  { title: "Energy Efficient", desc: "Optimized for minimum power consumption" },
-                  { title: "24/7 Support", desc: "Round-the-clock technical assistance" },
-                  { title: "Proven Results", desc: "Track record across multiple industry verticals" }
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0 mt-1"></div>
-                    <div>
-                      <h5 className="font-semibold text-gray-800">{feature.title}</h5>
-                      <p className="text-gray-600 text-sm">{feature.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div> */}
           </div>
         );
 
@@ -409,79 +386,6 @@ const HomePage = () => {
           </div>
         );
 
-      case 'Testimonials':
-        return (
-          <div className="space-y-8">
-            <div className="text-center mb-12">
-              <h3 className="text-3xl font-bold text-blue-900 mb-4">Certifications & Compliance</h3>
-              <p className="text-xl text-gray-600">Quality assurance through recognized standards and certifications</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {[
-                {
-                  title: "ISO 9001:2015",
-                  description: "Quality Management System certification ensuring consistent quality in our products and services.",
-                  icon: Award,
-                  color: "blue"
-                },
-                {
-                  title: "ISO 14001:2015",
-                  description: "Environmental Management System certification demonstrating our commitment to environmental protection.",
-                  icon: Shield,
-                  color: "green"
-                }
-              ].map((cert, index) => (
-                <Card key={index} className="text-center p-8 hover:shadow-lg transition-shadow group">
-                  <div className={`w-20 h-20 bg-${cert.color}-100 rounded-full mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                    <cert.icon className={`w-10 h-10 text-${cert.color}-600`} />
-                  </div>
-                  <h4 className="text-2xl font-bold text-gray-800 mb-4">{cert.title}</h4>
-                  <p className="text-gray-600 leading-relaxed">{cert.description}</p>
-                </Card>
-              ))}
-            </div>
-
-            <div className="mt-16 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-8">
-              <h4 className="text-2xl font-bold text-blue-900 mb-6 text-center">Our Quality Promise</h4>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-4">
-                  <h5 className="text-lg font-semibold text-blue-800">Quality Assurance</h5>
-                  <ul className="space-y-2">
-                    {[
-                      "Rigorous testing protocols",
-                      "registered raw materials",
-                      "Regular quality audits",
-                      "Continuous improvement programs"
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-center gap-2">
-                        <Droplets className="w-4 h-4 text-blue-500" />
-                        <span className="text-gray-700 text-sm">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="space-y-4">
-                  <h5 className="text-lg font-semibold text-blue-800">Compliance Standards</h5>
-                  <ul className="space-y-2">
-                    {[
-                      "Environmental regulations",
-                      "Safety standards",
-                      "Industry best practices",
-                      "International quality norms"
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-center gap-2">
-                        <Droplets className="w-4 h-4 text-blue-500" />
-                        <span className="text-gray-700 text-sm">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-
       case 'certifications':
         return (
           <div className="space-y-8">
@@ -514,43 +418,196 @@ const HomePage = () => {
                 </Card>
               ))}
             </div>
+          </div>
+        );
 
-            <div className="mt-16 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-8">
-              <h4 className="text-2xl font-bold text-blue-900 mb-6 text-center">Our Quality Promise</h4>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-4">
-                  <h5 className="text-lg font-semibold text-blue-800">Quality Assurance</h5>
-                  <ul className="space-y-2">
-                    {[
-                      "Rigorous testing protocols",
-                      "registered raw materials",
-                      "Regular quality audits",
-                      "Continuous improvement programs"
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-center gap-2">
-                        <Droplets className="w-4 h-4 text-blue-500" />
-                        <span className="text-gray-700 text-sm">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+      case 'our-team':
+        return (
+          <div className="space-y-8">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl font-bold text-blue-900 mb-4">Our Leadership Team</h3>
+              <p className="text-xl text-gray-600">Meet the visionaries behind CHEMTECH's success</p>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <Card className="p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <div className="grid md:grid-cols-3 gap-8 items-center">
+                  <div className="md:col-span-1 text-center">
+                    <div className="w-48 h-48 mx-auto bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center mb-4 shadow-lg">
+                      <Users className="w-24 h-24 text-white" />
+                    </div>
+                    <h4 className="text-2xl font-bold text-blue-900">G Murali</h4>
+                    <p className="text-blue-600 font-semibold">Founder & CEO</p>
+                    <Badge className="mt-2 bg-green-500">Since 2020</Badge>
+                  </div>
+                  
+                  <div className="md:col-span-2 space-y-4">
+                    <p className="text-gray-700 leading-relaxed">
+                      G Murali founded CHEMTECH Water Technologies & Solutions (India) Pvt Ltd in 2020 with a vision to revolutionize industrial water and wastewater treatment solutions across India. With extensive experience in water treatment technologies and environmental engineering, he has built CHEMTECH into a trusted name in the industry.
+                    </p>
+                    
+                    <div className="grid md:grid-cols-2 gap-4 mt-6">
+                      <div className="flex items-start gap-3">
+                        <Target className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
+                        <div>
+                          <h5 className="font-semibold text-gray-800">Vision</h5>
+                          <p className="text-sm text-gray-600">Leading India's sustainable water solutions</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Award className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
+                        <div>
+                          <h5 className="font-semibold text-gray-800">Achievement</h5>
+                          <p className="text-sm text-gray-600">50+ successful plant installations</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="space-y-4">
-                  <h5 className="text-lg font-semibold text-blue-800">Compliance Standards</h5>
-                  <ul className="space-y-2">
-                    {[
-                      "Environmental regulations",
-                      "Safety standards",
-                      "Industry best practices",
-                      "International quality norms"
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-center gap-2">
-                        <Droplets className="w-4 h-4 text-blue-500" />
-                        <span className="text-gray-700 text-sm">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+              </Card>
+
+              <div className="mt-12 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-8">
+                <h4 className="text-2xl font-bold text-blue-900 mb-6 text-center">Company Information</h4>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <Building2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
+                      <div>
+                        <h5 className="font-semibold text-gray-800">Headquarters</h5>
+                        <p className="text-sm text-gray-600">
+                          Plot No: 14, Khasra No: 190/2,<br />
+                          Sivan Nagar Main Road, Manali New Town,<br />
+                          Chennai - 600103, Tamil Nadu, India
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <Clock className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
+                      <div>
+                        <h5 className="font-semibold text-gray-800">Established</h5>
+                        <p className="text-sm text-gray-600">Founded in 2020</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Shield className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
+                      <div>
+                        <h5 className="font-semibold text-gray-800">Certifications</h5>
+                        <p className="text-sm text-gray-600">ISO 9001:2015 & ISO 14001:2015</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
+            </div>
+          </div>
+        );
+
+      case 'testimonials':
+        return (
+          <div className="space-y-8">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl font-bold text-blue-900 mb-4">Client Testimonials</h3>
+              <p className="text-xl text-gray-600">Hear what our satisfied clients have to say about our services</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  company: "Tata Chemicals Limited",
+                  industry: "Chemical Manufacturing",
+                  location: "Gujarat",
+                  testimonial: "CHEMTECH delivered an exceptional ETP solution for our manufacturing facility. Their technical expertise and prompt service have helped us maintain compliance with environmental standards while optimizing our operations.",
+                  rating: 5
+                },
+                {
+                  company: "Apollo Tyres Ltd",
+                  industry: "Automobile - Tyre Manufacturing",
+                  location: "Chennai",
+                  testimonial: "We've been working with CHEMTECH for our wastewater treatment needs for over 2 years. Their innovative approach and reliable maintenance services have significantly improved our plant efficiency.",
+                  rating: 5
+                },
+                {
+                  company: "Mahindra & Mahindra",
+                  industry: "Automotive",
+                  location: "Maharashtra",
+                  testimonial: "The RO plant installed by CHEMTECH has been running flawlessly. Their team's professionalism and after-sales support are commendable. Highly recommend their services.",
+                  rating: 5
+                },
+                {
+                  company: "Dr. Reddy's Laboratories",
+                  industry: "Pharmaceutical",
+                  location: "Hyderabad",
+                  testimonial: "CHEMTECH's specialty chemicals and technical support have been instrumental in maintaining our water treatment standards. Their quality control is excellent.",
+                  rating: 5
+                },
+                {
+                  company: "Reliance Industries",
+                  industry: "Petrochemical",
+                  location: "Gujarat",
+                  testimonial: "Outstanding service from design to commissioning. CHEMTECH's team handled our complex wastewater treatment requirements with expertise and delivered on time.",
+                  rating: 5
+                },
+                {
+                  company: "Taj Hotels",
+                  industry: "Hospitality",
+                  location: "Bangalore",
+                  testimonial: "We chose CHEMTECH for our STP installation and it was the best decision. The plant operates efficiently with minimal maintenance, and their customer support is always responsive.",
+                  rating: 5
+                },
+                {
+                  company: "Asian Paints Limited",
+                  industry: "Paint Manufacturing",
+                  location: "Mumbai",
+                  testimonial: "CHEMTECH's innovative solutions helped us achieve zero liquid discharge. Their technical team is highly knowledgeable and always available for support.",
+                  rating: 5
+                },
+                {
+                  company: "Wipro Limited",
+                  industry: "IT Services",
+                  location: "Pune",
+                  testimonial: "The water treatment system installed at our campus is working perfectly. CHEMTECH provided a cost-effective solution without compromising on quality.",
+                  rating: 5
+                },
+                {
+                  company: "Hindustan Unilever",
+                  industry: "FMCG",
+                  location: "Tamil Nadu",
+                  testimonial: "Excellent work on our effluent treatment plant. CHEMTECH's attention to detail and commitment to quality is evident in every aspect of their service.",
+                  rating: 5
+                }
+              ].map((testimonial, index) => (
+                <Card key={index} className="p-6 hover:shadow-xl transition-all duration-300 group">
+                  <div className="flex items-center gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  
+                  <p className="text-gray-700 italic mb-6 leading-relaxed">"{testimonial.testimonial}"</p>
+                  
+                  <div className="border-t pt-4">
+                    <h5 className="font-bold text-blue-900">{testimonial.company}</h5>
+                    <p className="text-sm text-gray-600">{testimonial.industry}</p>
+                    <p className="text-sm text-blue-600 flex items-center gap-1 mt-1">
+                      <Building2 className="w-3 h-3" />
+                      {testimonial.location}
+                    </p>
+                  </div>
+                </Card>
+              ))}
+            </div>
+
+            <div className="mt-12 bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white text-center">
+              <h4 className="text-2xl font-bold mb-4">Join Our Growing List of Satisfied Clients</h4>
+              <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+                Experience the CHEMTECH difference with our comprehensive water treatment solutions tailored to your industry needs
+              </p>
+              <Button className="bg-white text-blue-900 hover:bg-gray-100">
+                <PhoneCall className="w-4 h-4 mr-2" />
+                Request a Consultation
+              </Button>
             </div>
           </div>
         );
@@ -750,7 +807,7 @@ Our state-of-the-art Water Treatment Specialty Chemicals Manufacturing Unit ensu
       <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4">
           {/* Tab Navigation */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-2 mb-12">
             {tabs.map((tab) => (
               <TabButton
                 key={tab.id}
