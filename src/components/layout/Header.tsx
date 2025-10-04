@@ -44,10 +44,10 @@ const Header = () => {
             </div>
             
             <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-teal-500 to-emerald-600 bg-clip-text text-transparent tracking-widest group-hover:from-blue-500 group-hover:via-cyan-500 group-hover:to-green-500 transition-all duration-500">
+              <h1 className="text-3xl font-extrabold bg-gradient-to-r from-blue-600 via-teal-500 to-emerald-600 bg-clip-text text-transparent tracking-[0.3em] group-hover:from-blue-500 group-hover:via-cyan-500 group-hover:to-green-500 transition-all duration-500">
                 CHEMTECH
               </h1>
-              <p className="text-sm text-slate-600 leading-tight -mt-1">
+              <p className="text-xs text-slate-600 leading-tight -mt-1 font-medium">
                 Water Technologies & Solutions (India) Pvt Ltd
               </p>
             </div>
@@ -86,8 +86,8 @@ const Header = () => {
                     <Droplets className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold bg-gradient-to-r from-blue-600 via-teal-500 to-emerald-600 bg-clip-text text-transparent tracking-widest">CHEMTECH</h2>
-                    <p className="text-xs text-slate-600">Water Technologies & Solutions</p>
+                    <h2 className="text-xl font-extrabold bg-gradient-to-r from-blue-600 via-teal-500 to-emerald-600 bg-clip-text text-transparent tracking-[0.3em]">CHEMTECH</h2>
+                    <p className="text-xs text-slate-600 font-medium">Water Technologies & Solutions</p>
                   </div>
                 </div>
                 
