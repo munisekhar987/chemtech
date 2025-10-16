@@ -425,7 +425,7 @@ const HomePage = () => {
           <div className="space-y-8">
             <div className="text-center mb-12">
               <h3 className="text-3xl font-bold text-blue-900 mb-4">Our Leadership Team</h3>
-              <p className="text-xl text-gray-600">Meet the visionaries behind CHEMTECH's success</p>
+              <p className="text-xl text-gray-600">Meet the visionary behind CHEMTECH's success</p>
             </div>
 
             <div className="max-w-4xl mx-auto">
@@ -436,7 +436,7 @@ const HomePage = () => {
                       <Users className="w-24 h-24 text-white" />
                     </div>
                     <h4 className="text-2xl font-bold text-blue-900">G Murali</h4>
-                    <p className="text-blue-600 font-semibold">Founder & CEO</p>
+                    <p className="text-blue-600 font-semibold">Chairman & Managing Director </p>
                     <Badge className="mt-2 bg-green-500">Since 2020</Badge>
                   </div>
                   
@@ -705,7 +705,7 @@ const HomePage = () => {
             <div className="space-y-6 sm:space-y-8 lg:space-y-10">
               <Badge variant="secondary" className="bg-white/10 text-white border-white/20 text-xs sm:text-sm lg:text-base">
                 <Award className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-blue-300" />
-                <span className="hidden md:inline">Pioneering Industrial Water & Waste Water Treatment Solutions Since 2009 | ISO 9001:2015 Registered</span>
+                <span className="hidden md:inline">Pioneering Industrial Water & Waste Water Treatment Solutions Since 2009 </span>
                 <span className="md:hidden">ISO 9001:2015 Since 2009</span>
               </Badge>
               

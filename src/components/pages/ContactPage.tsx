@@ -33,7 +33,7 @@ const ContactPage = () => {
       {/* Contact Forms */}
       <section className="py-24 bg-gradient-to-br from-sky-50 to-cyan-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid lg:grid-cols-2 gap-16 mb-12">
             {/* Technical Consultation Form */}
             <Card className="shadow-xl">
               <CardHeader>
@@ -41,17 +41,17 @@ const ContactPage = () => {
                   <Calculator className="w-6 h-6" />
                   Technical Consultation
                 </CardTitle>
-                <CardDescription>Free system analysis & recommendations</CardDescription>
+                <CardDescription>For System Analysis & Recommendations</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-2 gap-4">
-                  <Input placeholder="Full Name" />
+                  <Input placeholder="Name" />
                   <Input placeholder="Company" />
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4">
-                  <Input type="email" placeholder="Email Address" />
-                  <Input type="tel" placeholder="Phone Number" />
+                  <Input type="email" placeholder="Email" />
+                  <Input type="tel" placeholder="Mobile Number" />
                 </div>
 
                 <Select>
@@ -63,32 +63,40 @@ const ContactPage = () => {
                     <SelectItem value="food-beverage">Food & Beverage</SelectItem>
                     <SelectItem value="pharmaceutical">Pharmaceutical</SelectItem>
                     <SelectItem value="textile">Textile</SelectItem>
-                    <SelectItem value="municipal">Municipal</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
+                    <SelectItem value="automobile">Automobile</SelectItem>
+                    <SelectItem value="chemical">Chemical</SelectItem>
+                    <SelectItem value="dairy">Dairy</SelectItem>
+                    <SelectItem value="nutraceuticals">Nutraceuticals</SelectItem>
+                    <SelectItem value="others">Other's</SelectItem>
                   </SelectContent>
                 </Select>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <Input
-                    type="number"
-                    placeholder="Required Capacity (LPH)"
-                  />
+                  <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select Plant Type " />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Existingg Plant">Existing Plant</SelectItem>
+                    <SelectItem value="New Plant">New Plant</SelectItem>
+                  </SelectContent>
+                </Select>
                   <Select>
                     <SelectTrigger>
                       <SelectValue placeholder="Project Timeline" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="immediate">Immediate (1-2 weeks)</SelectItem>
-                      <SelectItem value="short">Short term (1-3 months)</SelectItem>
-                      <SelectItem value="medium">Medium term (3-6 months)</SelectItem>
-                      <SelectItem value="long">Long term (6+ months)</SelectItem>
+                      <SelectItem value="short">Short Term (1-3 months)</SelectItem>
+                      <SelectItem value="medium">Medium Term (3-6 months)</SelectItem>
+                      <SelectItem value="long">Long Term (6+ months)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <Textarea
                   rows={4}
-                  placeholder="Describe your water treatment requirements, quality parameters, and specific challenges..."
+                  placeholder="Describe your Industrial water treatment plant, Waste water traetment plant & Sewage traetment plant , RO & UF plant , Softner plant & DM plant requirements, quality parameters and specific challenges..."
                   className="resize-none"
                 />
 
@@ -96,9 +104,6 @@ const ContactPage = () => {
                   Request Technical Consultation
                 </Button>
 
-                <p className="text-xs text-center text-slate-500">
-                  Our engineers will contact you within 24 hours with a preliminary assessment
-                </p>
               </CardContent>
             </Card>
 
@@ -109,17 +114,17 @@ const ContactPage = () => {
                   <Wrench className="w-6 h-6" />
                   Service Request
                 </CardTitle>
-                <CardDescription>Maintenance & support services</CardDescription>
+                <CardDescription>Operation & Maintenance , Support Services</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-2 gap-4">
-                  <Input placeholder="Contact Person" />
-                  <Input placeholder="Facility Location" />
+                  <Input placeholder="Name" />
+                  <Input placeholder="Company" />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <Input type="email" placeholder="Email Address" />
-                  <Input type="tel" placeholder="Emergency Contact" />
+                  <Input type="email" placeholder="Email" />
+                  <Input type="tel" placeholder="Mobile Number" />
                 </div>
 
                 <Select>
@@ -149,17 +154,9 @@ const ContactPage = () => {
 
                 <Textarea
                   rows={4}
-                  placeholder="Describe the service requirement, symptoms observed, or maintenance needed..."
+                  placeholder="Describe the Service requirement / Deviations observed / Specific challenges   Type of Maintenance required / Others "
                   className="resize-none"
                 />
-
-                <div className="flex items-center gap-3 p-4 bg-green-50 rounded-xl">
-                  <Clock className="w-5 h-5 text-green-600" />
-                  <div className="text-sm">
-                    <p className="font-semibold text-green-800">Service Response Times:</p>
-                    <p className="text-green-700">Critical: 2-4 hours | High: Same day | Medium: 24-48 hours</p>
-                  </div>
-                </div>
 
                 <Button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:shadow-xl">
                   Submit Service Request
@@ -167,6 +164,40 @@ const ContactPage = () => {
               </CardContent>
             </Card>
           </div>
+
+          {/* Working Hours & Response Time Card */}
+          <Card className="shadow-xl max-w-4xl mx-auto bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
+            <CardContent className="p-8">
+              <div className="flex items-start gap-4">
+                <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <Clock className="w-7 h-7 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-green-900 mb-4">Business Hours & Response Time</h3>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <p className="text-sm font-semibold text-green-800 mb-2">Working Hours:</p>
+                      <p className="text-sm text-green-700 leading-relaxed">
+                        9:00 AM to 6:00 PM<br />
+                        Monday to Saturday
+                      </p>
+                      <p className="text-sm font-medium text-emerald-600 mt-3">
+                        🔧 Emergency Support: 24/7 Available
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-green-800 mb-2">Service Response Time:</p>
+                      <div className="space-y-1.5 text-sm text-green-700">
+                        <p><span className="font-semibold">Critical:</span> 2-4 hours</p>
+                        <p><span className="font-semibold">High:</span> Same day</p>
+                        <p><span className="font-semibold">Medium:</span> 24-48 hours</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -202,7 +233,6 @@ const ContactPage = () => {
                       <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
                       <p>Saturday: 9:00 AM - 2:00 PM</p>
                       <p>Sunday: Closed</p>
-                      <p className="text-green-600 font-medium mt-2">Emergency Support: 24/7 Available</p>
                     </div>
                   </div>
                 </div>
