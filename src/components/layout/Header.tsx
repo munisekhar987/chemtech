@@ -3,14 +3,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { 
   Menu,
-  Droplets,
   Settings,
   Home,
   Package,
-  MessageCircle,
-  Waves
+  MessageCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -33,14 +32,21 @@ const Header = () => {
           {/* Logo + Company Name */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative">
-              {/* Main logo container */}
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-blue-500/50 transition-all duration-300">
-                <Droplets className="w-7 h-7 text-white" />
+              {/* Logo container with animations - OVAL SHAPE */}
+              <div className="w-16 h-12 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-blue-500/50 transition-all duration-300 bg-white">
+                <Image 
+                  src="/images/cws_logo.png" 
+                  alt="Chemtech Logo" 
+                  width={56} 
+                  height={42}
+                  className="rounded-full object-contain"
+                  priority
+                />
               </div>
               
-              {/* Water ripples */}
-              <div className="absolute inset-0 w-12 h-12 border-2 border-blue-300/50 rounded-full animate-ping"></div>
-              <div className="absolute inset-0 w-12 h-12 border border-cyan-400/30 rounded-full animate-pulse"></div>
+              {/* Water ripples animation - OVAL SHAPE */}
+              <div className="absolute inset-0 w-16 h-12 border-2 border-blue-300/50 rounded-full animate-ping"></div>
+              <div className="absolute inset-0 w-16 h-12 border border-cyan-400/30 rounded-full animate-pulse"></div>
             </div>
             
             <div>
@@ -80,10 +86,16 @@ const Header = () => {
             </SheetTrigger>
             <SheetContent side="right" className="bg-gradient-to-b from-blue-50 to-cyan-50">
               <div className="flex flex-col gap-4 mt-8">
-                {/* Mobile logo */}
+                {/* Mobile logo - OVAL SHAPE */}
                 <div className="flex items-center gap-3 mb-6 pb-4 border-b border-blue-200">
-                  <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-full flex items-center justify-center">
-                    <Droplets className="w-6 h-6 text-white" />
+                  <div className="w-14 h-10 rounded-full flex items-center justify-center bg-white shadow-md">
+                    <Image 
+                      src="/images/cws_logo.png" 
+                      alt="Chemtech Logo" 
+                      width={50} 
+                      height={36}
+                      className="rounded-full object-contain"
+                    />
                   </div>
                   <div>
                     <h2 className="text-xl font-extrabold bg-gradient-to-r from-blue-600 via-teal-500 to-emerald-600 bg-clip-text text-transparent tracking-[0.3em]">CHEMTECH</h2>

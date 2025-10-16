@@ -34,18 +34,16 @@ const Footer = () => {
               </div>
               <div>
                 <h3 className="text-lg font-bold">Chemtech</h3>
-                <p className="text-sm text-slate-400">Water Technologies</p>
+                <p className="text-sm text-slate-400">Water Technologies & Solutions (India) Pvt Ltd </p>
               </div>
             </div>
             <p className="text-slate-400 leading-relaxed">
-              Engineering excellence in water treatment solutions with a commitment to sustainability and innovation.
+              Engineering excellence in Industrial water & waste water treament solutions with commitment to sustainability and innovation
             </p>
             <div className="pt-4">
               <p className="text-sm font-semibold mb-2">Quality Certifications</p>
               <div className="flex flex-wrap gap-2">
                 <Badge variant="secondary">ISO 9001:2015</Badge>
-                <Badge variant="secondary">ISO 14001</Badge>
-                <Badge variant="secondary">CE Certified</Badge>
               </div>
             </div>
           </div>

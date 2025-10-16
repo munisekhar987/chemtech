@@ -464,41 +464,6 @@ const HomePage = () => {
                   </div>
                 </div>
               </Card>
-
-              <div className="mt-12 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-8">
-                <h4 className="text-2xl font-bold text-blue-900 mb-6 text-center">Company Information</h4>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <Building2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
-                      <div>
-                        <h5 className="font-semibold text-gray-800">Headquarters</h5>
-                        <p className="text-sm text-gray-600">
-                          Plot No: 14, Khasra No: 190/2,<br />
-                          Sivan Nagar Main Road, Manali New Town,<br />
-                          Chennai - 600103, Tamil Nadu, India
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <Clock className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
-                      <div>
-                        <h5 className="font-semibold text-gray-800">Established</h5>
-                        <p className="text-sm text-gray-600">Founded in 2020</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Shield className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
-                      <div>
-                        <h5 className="font-semibold text-gray-800">Certifications</h5>
-                        <p className="text-sm text-gray-600">ISO 9001:2015 & ISO 14001:2015</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         );
@@ -778,8 +743,8 @@ const HomePage = () => {
                 <div className="bg-gradient-to-r from-indigo-500 to-purple-700 rounded-full flex items-center p-3 sm:p-4 shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
                   <div className="absolute inset-0 bg-white opacity-10 rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
                   <div className="flex-1 pl-3 sm:pl-4 relative z-10 min-w-0">
-                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-1">SPECIALIZED IN</h3>
-                    <p className="text-white/90 text-xs sm:text-sm font-medium">WTP, STP, ETP, UF & RO</p>
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-1">SPECIALIZATIONS </h3>
+                    <p className="text-white/90 text-xs sm:text-sm font-medium">WTP/ETP/STP/UF & RO/SOFTNER/DM PLANT'S</p>
                     <p className="text-white/80 text-xs">ZLD CLIENTS</p>
                   </div>
                   <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30 relative z-10 flex-shrink-0">

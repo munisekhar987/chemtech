@@ -164,40 +164,6 @@ const ContactPage = () => {
               </CardContent>
             </Card>
           </div>
-
-          {/* Working Hours & Response Time Card */}
-          <Card className="shadow-xl max-w-4xl mx-auto bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
-            <CardContent className="p-8">
-              <div className="flex items-start gap-4">
-                <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                  <Clock className="w-7 h-7 text-white" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-green-900 mb-4">Business Hours & Response Time</h3>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <p className="text-sm font-semibold text-green-800 mb-2">Working Hours:</p>
-                      <p className="text-sm text-green-700 leading-relaxed">
-                        9:00 AM to 6:00 PM<br />
-                        Monday to Saturday
-                      </p>
-                      <p className="text-sm font-medium text-emerald-600 mt-3">
-                        🔧 Emergency Support: 24/7 Available
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-green-800 mb-2">Service Response Time:</p>
-                      <div className="space-y-1.5 text-sm text-green-700">
-                        <p><span className="font-semibold">Critical:</span> 2-4 hours</p>
-                        <p><span className="font-semibold">High:</span> Same day</p>
-                        <p><span className="font-semibold">Medium:</span> 24-48 hours</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </section>
 
@@ -206,18 +172,19 @@ const ContactPage = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16">
             <div>
-              <h3 className="text-3xl font-bold text-sky-900 mb-8">Visit Our Engineering Center</h3>
+              <h3 className="text-3xl font-bold text-sky-900 mb-8">Visit Our Administrative Office</h3>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-sky-500 to-cyan-500 rounded-xl flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-sky-900 mb-2">Corporate Headquarters</h4>
+                    <h4 className="font-semibold text-sky-900 mb-2">Registered Office</h4>
                     <p className="text-slate-600 leading-relaxed">
                       Chemtech Water Technologies & Solutions India Pvt Ltd<br />
+                      # 1-1 , Krishna nagar , Near Mandapam <br />
                       Nagari, Chittoor District<br />
-                      Andhra Pradesh - 517501<br />
+                      Andhra Pradesh - 517590<br />
                       India
                     </p>
                   </div>
@@ -230,22 +197,9 @@ const ContactPage = () => {
                   <div>
                     <h4 className="font-semibold text-sky-900 mb-2">Business Hours</h4>
                     <div className="text-slate-600 space-y-1">
-                      <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                      <p>Saturday: 9:00 AM - 2:00 PM</p>
+                      <p>Monday - Saturday: 9:00 AM - 6:00 PM</p>
                       <p>Sunday: Closed</p>
                     </div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-violet-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Truck className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-sky-900 mb-2">Service Coverage</h4>
-                    <p className="text-slate-600">
-                      Pan-India service network with regional offices in Chennai, Bangalore, Hyderabad, and Mumbai
-                    </p>
                   </div>
                 </div>
               </div>
@@ -266,15 +220,6 @@ const ContactPage = () => {
                   title="Chemtech Water Technologies & Solutions India Pvt Ltd - Nagari, Chittoor"
                   className="rounded-2xl"
                 ></iframe>
-              </div>
-              
-              {/* Map instructions */}
-              <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-                <p className="text-sm text-blue-800 font-medium mb-2">Directions to Our Office:</p>
-                <p className="text-sm text-blue-700">
-                  Located in Nagari, Chittoor District, Andhra Pradesh - easily accessible from major highways. 
-                  Ample parking space available on premises.
-                </p>
               </div>
             </div>
           </div>

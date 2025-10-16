@@ -211,7 +211,7 @@ const FlowchartServicesPage = () => {
     },
     maintenance: {
       id: 'maintenance',
-      title: 'Maintenance Division',
+      title: 'Service Division',
       icon: Wrench,
       color: 'from-purple-500 to-indigo-500',
       sections: [
@@ -262,7 +262,7 @@ const FlowchartServicesPage = () => {
         },
         {
           id: 'spares',
-          title: 'Spare Parts & Components',
+          title: 'Spares & Components',
           subsections: [
             {
               id: 'spare-products',
