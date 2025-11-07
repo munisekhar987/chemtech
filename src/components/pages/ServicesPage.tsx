@@ -13,7 +13,6 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const FlowchartServicesPage = () => {
-  const [activeDivision, setActiveDivision] = useState('chemical');
   const [expandedSections, setExpandedSections] = useState({});
   const [expandedSubSections, setExpandedSubSections] = useState({});
 
@@ -31,14 +30,80 @@ const FlowchartServicesPage = () => {
     }));
   };
 
-  const navigateToProduct = (productName) => {
-    const productId = productName.toLowerCase()
-      .replace(/[^a-z0-9\s]/g, '')
-      .replace(/\s+/g, '-')
-      .replace(/--+/g, '-');
-    window.location.href = `/products#${productId}`;
+  // ✅ FIXED PRODUCT NAVIGATION
+  const navigateToProduct = (productName: string) => {
+    const productMap: Record<string, string> = {
+      // WTP
+      'Coagulants': 'coagulants',
+      'Polymers': 'polymers',
+      'Antiscalants': 'antiscalants',
+      'Anti Oxidants': 'anti-oxidants',
+      'Micro Biocide & Preservatives': 'micro-biocide-preservatives',
+      'pH Booster and Mineral Additives (Food Grade)': 'ph-booster-and-mineral-additives-food-grade',
+      'Membrane Cleaning Chemicals': 'membrane-cleaning-chemicals',
+      '2010 L (Liquid) ': 'silikel',
+
+      // ETP
+      'General Coagulants': 'coagulants-effluent',
+      'Chemtech Coagulants': 'coagulants-effluent',
+      'Anionic Polymers': 'flocculants',
+      'Calionic Polymers/ Sludge Dewatering Polymers': 'sludge-dewatering-polymer',
+      'Bio-Culture': 'bioflocculants-for-secondary-clarification',
+      'Aerobic Culture': 'bioflocculants-for-secondary-clarification',
+      'Anaerobic Culture': 'bioflocculants-for-secondary-clarification',
+      'Micronutrients': 'micronutrients-for-aerobic-anaerobic',
+      'Biomass Setting Polymers':'Biomass-Setting-Polymers',
+
+      // Defoamers
+      'Silica Based Defoamers': 'defoamer',
+      'Non-Silica Defoamers': 'defoamer',
+
+      // Cooling Water
+      'Scale & Corrosion Inhibitor': 'scale-corrosion-inhibitor',
+      'pH Booster': 'ph-booster',
+      'Silica Dispersants': 'silica-dispersants',
+      'Oxidising Biocide': 'oxidising-biocide',
+      'Non-Oxidising Biocide': 'nonoxidising-biocide',
+      'Passivation Chemicals': 'passivation-chemicals',
+      'De-Scaling Chemicals': 'descaling-chemicals-cooling',
+      'De-Alkalizer': 'dealkalizer',
+      'Pre-Cleaning Chemical': 'precleaning-chemical-cooling',
+
+      // Boiler Water
+      'Scale & Corrosion Chemicals': 'scale-corrosion-chemicals',
+      'Sludge Conditioners': 'sludge-conditioners',
+      'Oxygen Scavengers': 'oxygen-scavengers',
+      'pH Booster (Boiler)': 'ph-booster-boiler',
+      'New Boiler Precleaning Chemicals': 'new-boiler-precleaning-chemicals',
+      'Idle Boiler Preservatives': 'idle-boiler-preservatives',
+      'Phosphate Treatment Chemicals': 'phosphate-treatment-chemicals',
+      'Carbonate Treatment Chemicals': 'carbonate-treatment-chemicals',
+      'Morpholine Treatment Chemicals': 'morpholine-treatment-chemicals',
+    };
+
+    const slugify = (str: string) =>
+      str.toLowerCase()
+        .normalize('NFKD')
+        .replace(/&/g, 'and')
+        .replace(/[^\w\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-');
+
+    const base = slugify(productName);
+    const id = productMap[productName] || base;
+
+    const el = typeof document !== 'undefined' ? document.getElementById(id) : null;
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.classList.add('ring-4', 'ring-cyan-300');
+      setTimeout(() => el.classList.remove('ring-4', 'ring-cyan-300'), 1800);
+      return;
+    }
+    window.location.href = `/products#${id}`;
   };
 
+  // ✅ FULL DIVISIONS DATA RESTORED
   const divisionsData = {
     chemical: {
       id: 'chemical',
@@ -48,16 +113,12 @@ const FlowchartServicesPage = () => {
       sections: [
         {
           id: 'water-treatment',
-          title: 'Water Treatment Chemicals',
+          title: 'Water Treatment Chemicals(WTP)',
           subsections: [
-            {
-              id: 'raw-water',
-              title: 'Raw Water Purification Solutions',
-              products: ['Coagulants', 'Polymers']
-            },
+            { id: 'raw-water', title: 'Raw Water Pre-Treatment Chemicals', products: ['Coagulants', 'Polymers'] },
             {
               id: 'ro-uf',
-              title: 'Membrane Protection & Performance',
+              title: 'R.O & U.F Membrane Treatment Chemicals',
               products: [
                 'Antiscalants',
                 'Anti Oxidants',
@@ -66,34 +127,19 @@ const FlowchartServicesPage = () => {
                 'Membrane Cleaning Chemicals'
               ]
             },
-            {
-              id: 'hardness-silica',
-              title: 'Scale Prevention Specialty',
-              products: ['Silikel']
-            }
+            { id: 'hardness-silica', title: 'Hardness & Silica Treatment Chemicals', products: ['2010 L (Liquid) '] }
           ]
         },
         {
           id: 'effluent-sewage',
-          title: 'Effluent & Sewage Treatment Chemicals',
+          title: 'Effluent & Sewage Treatment Chemicals (ETP)',
           subsections: [
-            {
-              id: 'effluent-products',
-              title: 'Complete Effluent Treatment Range',
-              products: [
-                'Coagulants',
-                'Flocculants',
-                'Bio-flocculants for Secondary Clarification',
-                'Aerobic & Anaerobic Culture Micronutrients',
-                'De-Colourants',
-                'De-Emulsifier',
-                'De-foamer',
-                'Sludge Dewatering Polymer',
-                'Chemoxy Super',
-                'Deodorant',
-                'Micronutrients for Aerobic & Anaerobic'
-              ]
-            }
+            { id: 'coagulants', title: 'Coagulants', products: ['General Coagulants', 'Chemtech Coagulants'] },
+            { id: 'polymers', title: 'Flocculants / Polymers', products: ['Anionic Polymers', 'Calionic Polymers/ Sludge Dewatering Polymers'] },
+            { id: 'bioculture', title: 'Bio-Culture', products: ['Aerobic Culture', 'Anaerobic Culture'] },
+            { id: 'micronutrients', title: 'Micronutrients', products: ['Aerobic Culture', 'Aerobic Culture'] },
+             { id: 'Biomass-Setting-Polymers', title: 'Biomass Setting Polymers', products: [] },
+            { id: 'defoamers', title: 'Defoamers', products: ['Silica Based Defoamers', 'Non-Silica Defoamers'] }
           ]
         },
         {
@@ -128,7 +174,7 @@ const FlowchartServicesPage = () => {
                 'Scale & Corrosion Chemicals',
                 'Sludge Conditioners',
                 'Oxygen Scavengers',
-                'pH Booster',
+                'pH Booster (Boiler)',
                 'New Boiler Precleaning Chemicals',
                 'Idle Boiler Preservatives',
                 'De-Scaling Chemicals',
@@ -151,60 +197,28 @@ const FlowchartServicesPage = () => {
           id: 'ro-plants',
           title: 'Reverse Osmosis Plants',
           subsections: [
-            {
-              id: 'ro-systems',
-              title: 'Industrial to Municipal Scale RO',
-              products: [
-                'Industrial RO System 5000 LPH',
-                'Compact RO Unit 500 LPH',
-                'Municipal RO Plant 50000 LPH'
-              ]
-            }
+            { id: 'ro-systems', title: 'Industrial to Municipal Scale RO', products: ['Industrial RO System 5000 LPH', 'Compact RO Unit 500 LPH', 'Municipal RO Plant 50000 LPH'] }
           ]
         },
         {
           id: 'wtp-plants',
           title: 'Water Treatment Plants',
           subsections: [
-            {
-              id: 'wtp-systems',
-              title: 'Advanced Filtration Systems',
-              products: [
-                'UF Membrane System',
-                'Iron Removal Plant',
-                'Softening Plant'
-              ]
-            }
+            { id: 'wtp-systems', title: 'Advanced Filtration Systems', products: ['UF Membrane System', 'Iron Removal Plant', 'Softening Plant'] }
           ]
         },
         {
           id: 'etp-plants',
           title: 'Effluent Treatment Plants',
           subsections: [
-            {
-              id: 'etp-systems',
-              title: 'Biological Treatment Technologies',
-              products: [
-                'MBBR ETP System',
-                'SBR Treatment Plant',
-                'MBR Technology Plant'
-              ]
-            }
+            { id: 'etp-systems', title: 'Biological Treatment Technologies', products: ['MBBR ETP System', 'SBR Treatment Plant', 'MBR Technology Plant'] }
           ]
         },
         {
           id: 'stp-plants',
           title: 'Sewage Treatment Plants',
           subsections: [
-            {
-              id: 'stp-systems',
-              title: 'Sewage Treatment Solutions',
-              products: [
-                'ASP Sewage Plant',
-                'Packaged STP Unit',
-                'Decentralized STP'
-              ]
-            }
+            { id: 'stp-systems', title: 'Sewage Treatment Solutions', products: ['ASP Sewage Plant', 'Packaged STP Unit', 'Decentralized STP'] }
           ]
         }
       ]
@@ -219,213 +233,111 @@ const FlowchartServicesPage = () => {
           id: 'om-services',
           title: 'Operation & Maintenance',
           subsections: [
-            {
-              id: 'om-products',
-              title: 'Professional O&M Services',
-              products: [
-                'ETP O&M Services',
-                'STP Management',
-                'WTP Operations'
-              ]
-            }
+            { id: 'om-products', title: 'Professional O&M Services', products: ['ETP O&M Services', 'STP Management', 'WTP Operations'] }
           ]
         },
         {
           id: 'upgrades',
           title: 'Plant Upgrades & Revamping',
           subsections: [
-            {
-              id: 'upgrade-products',
-              title: 'Modernization & Enhancement',
-              products: [
-                'Efficiency Upgrade Package',
-                'Technology Modernization',
-                'Capacity Enhancement'
-              ]
-            }
+            { id: 'upgrade-products', title: 'Modernization & Enhancement', products: ['Efficiency Upgrade Package', 'Technology Modernization', 'Capacity Enhancement'] }
           ]
         },
         {
           id: 'consultancy',
           title: 'Technical Consultancy',
           subsections: [
-            {
-              id: 'consultancy-products',
-              title: 'Expert Advisory Services',
-              products: [
-                'Water Audit Services',
-                'Process Optimization',
-                'Troubleshooting Support'
-              ]
-            }
+            { id: 'consultancy-products', title: 'Expert Advisory Services', products: ['Water Audit Services', 'Process Optimization', 'Troubleshooting Support'] }
           ]
         },
         {
           id: 'spares',
           title: 'Spares & Components',
           subsections: [
-            {
-              id: 'spare-products',
-              title: 'Quality Replacement Parts',
-              products: [
-                'RO Membrane Replacement',
-                'Pump & Motor Spares',
-                'Control Panel Components'
-              ]
-            }
+            { id: 'spare-products', title: 'Quality Replacement Parts', products: ['RO Membrane Replacement', 'Pump & Motor Spares', 'Control Panel Components'] }
           ]
         }
       ]
     }
   };
 
-  const toggleDivision = (divisionId) => {
-    setActiveDivision(activeDivision === divisionId ? null : divisionId);
-  };
-
   return (
     <div className="pt-32">
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="py-20 bg-gradient-to-br from-blue-900 to-blue-700 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-64 h-64 bg-blue-300 rounded-full animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-48 h-48 bg-cyan-300 rounded-full animate-pulse"></div>
-        </div>
-        
         <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
           <h1 className="text-5xl lg:text-6xl font-bold mb-6">Our Services</h1>
           <p className="text-xl text-blue-100 max-w-4xl mx-auto">
-            Over the years, we have developed expertise in offering highly effective water and waste water treatment chemicals and industrial process chemicals. This has been possible due to our strong commitment towards quality and state-of-the-art manufacturing and testing facilities.
+            Over the years, we have developed expertise in offering highly effective water and waste water treatment solutions.
           </p>
         </div>
       </section>
 
       {/* Divisions Section */}
       <section className="py-24 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4">
-          {/* Main DIVISIONS Title */}
-          <div className="flex flex-col items-center mb-12">
-            <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-12 py-8 rounded-3xl shadow-2xl">
-              <h1 className="text-4xl font-bold text-center">DIVISIONS</h1>
-            </div>
-          </div>
-
-          {/* Three Division Cards Side by Side - Fixed Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {Object.values(divisionsData).map((division) => {
-              const Icon = division.icon;
-              
-              return (
-                <Card 
-                  key={division.id}
-                  className="flex flex-col"
-                  style={{ height: '600px' }}
-                >
-                  {/* Division Header - Fixed */}
-                  <CardHeader 
-                    className={`bg-gradient-to-r ${division.color} text-white text-center flex-shrink-0`}
-                  >
-                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Icon className="w-8 h-8 text-white" />
-                    </div>
-                    <CardTitle className="text-2xl font-bold">{division.title}</CardTitle>
-                  </CardHeader>
-
-                  {/* Division Content - Scrollable */}
-                  <CardContent className="p-6 flex-1 overflow-y-auto">
-                    <div className="space-y-3">
-                      {division.sections.map((section) => (
-                        <div key={section.id} className="border-2 rounded-xl overflow-hidden shadow-sm" style={{ borderColor: '#bfdbfe' }}>
-                          {/* Section Header - Clickable */}
-                          <div 
-                            className="p-4 cursor-pointer transition-all"
-                            style={{ backgroundColor: '#dbeafe' }}
-                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#bfdbfe'}
-                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#dbeafe'}
-                            onClick={() => toggleSection(section.id)}
-                          >
-                            <div className="flex items-center justify-between">
-                              <h3 className="text-lg flex items-center gap-3" style={{ color: '#1e3a8a' }}>
-                                <Droplets className="w-5 h-5" style={{ color: '#1e40af' }} />
-                                {section.title}
-                              </h3>
-                              {expandedSections[section.id] ? 
-                                <ChevronDown className="w-5 h-5" style={{ color: '#1e3a8a' }} /> : 
-                                <ChevronRight className="w-5 h-5" style={{ color: '#1e3a8a' }} />
-                              }
-                            </div>
-                          </div>
-
-                          {/* Subsections - Level 2 */}
-                          {expandedSections[section.id] && (
-                            <div className="p-4 bg-gray-50 space-y-3">
-                              {section.subsections.map((subsection) => (
-                                <div key={subsection.id} className="border rounded-lg overflow-hidden bg-white shadow-sm" style={{ borderColor: '#bfdbfe' }}>
-                                  {/* Subsection Header - Clickable */}
-                                  <div 
-                                    className="p-3 cursor-pointer transition-all"
-                                    style={{ backgroundColor: '#dbeafe' }}
-                                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#bfdbfe'}
-                                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#dbeafe'}
-                                    onClick={() => toggleSubSection(subsection.id)}
-                                  >
-                                    <div className="flex items-center justify-between">
-                                      <h4 className="text-base flex items-center gap-2" style={{ color: '#1e3a8a' }}>
-                                        <Droplets className="w-4 h-4" style={{ color: '#1e40af' }} />
-                                        {subsection.title}
-                                      </h4>
-                                      <div className="flex items-center gap-2">
-                                        <span className="text-xs px-2 py-1 rounded-full" style={{ backgroundColor: '#dbeafe', color: '#1e40af' }}>
-                                          {subsection.products.length}
-                                        </span>
-                                        {expandedSubSections[subsection.id] ? 
-                                          <ChevronDown className="w-4 h-4" style={{ color: '#1e40af' }} /> : 
-                                          <ChevronRight className="w-4 h-4" style={{ color: '#1e40af' }} />
-                                        }
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  {/* Products - Level 3 */}
-                                  {expandedSubSections[subsection.id] && (
-                                    <div className="p-3 bg-white space-y-2">
-                                      {subsection.products.map((product, idx) => (
-                                        <div 
-                                          key={idx}
-                                          className="p-3 rounded-lg border-l-4 transition-all cursor-pointer"
-                                          style={{ backgroundColor: '#dbeafe', borderLeftColor: '#3b82f6' }}
-                                          onMouseEnter={(e) => {
-                                            e.currentTarget.style.backgroundColor = '#bfdbfe';
-                                            e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
-                                          }}
-                                          onMouseLeave={(e) => {
-                                            e.currentTarget.style.backgroundColor = '#dbeafe';
-                                            e.currentTarget.style.boxShadow = 'none';
-                                          }}
-                                          onClick={() => navigateToProduct(product)}
-                                        >
-                                          <div className="flex items-center gap-2">
-                                            <Droplets className="w-3 h-3 flex-shrink-0" style={{ color: '#1e40af' }} />
-                                            <span className="text-sm" style={{ color: '#1e3a8a' }}>
-                                              {product}
-                                            </span>
-                                          </div>
-                                        </div>
-                                      ))}
-                                    </div>
-                                  )}
-                                </div>
-                              ))}
-                            </div>
-                          )}
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {Object.values(divisionsData).map((division) => {
+            const Icon = division.icon;
+            return (
+              <Card key={division.id} className="flex flex-col" style={{ height: '600px' }}>
+                <CardHeader className={`bg-gradient-to-r ${division.color} text-white text-center`}>
+                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon className="w-8 h-8 text-white" />
+                  </div>
+                  <CardTitle className="text-2xl font-bold">{division.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="p-6 flex-1 overflow-y-auto">
+                  <div className="space-y-3">
+                    {division.sections.map((section) => (
+                      <div key={section.id} className="border-2 rounded-xl overflow-hidden shadow-sm">
+                        <div
+                          className="p-4 bg-blue-100 cursor-pointer flex justify-between items-center"
+                          onClick={() => toggleSection(section.id)}
+                        >
+                          <h3 className="font-semibold text-blue-900 flex items-center gap-2">
+                            <Droplets className="w-5 h-5" /> {section.title}
+                          </h3>
+                          {expandedSections[section.id] ? <ChevronDown /> : <ChevronRight />}
                         </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
+                        {expandedSections[section.id] && (
+                          <div className="p-4 bg-gray-50 space-y-3">
+                            {section.subsections.map((sub) => (
+                              <div key={sub.id} className="border rounded-lg bg-white">
+                                <div
+                                  className="p-3 bg-blue-50 cursor-pointer flex justify-between items-center"
+                                  onClick={() => toggleSubSection(sub.id)}
+                                >
+                                  <span className="font-medium text-blue-900 flex items-center gap-2">
+                                    <Droplets className="w-4 h-4" /> {sub.title}
+                                  </span>
+                                  {expandedSubSections[sub.id] ? <ChevronDown /> : <ChevronRight />}
+                                </div>
+                                {expandedSubSections[sub.id] && (
+                                  <div className="p-3 bg-white space-y-2">
+                                    {sub.products.map((product, i) => (
+                                      <div
+                                        key={i}
+                                        className="p-2 bg-blue-100 rounded-lg hover:bg-blue-200 cursor-pointer"
+                                        onClick={() => navigateToProduct(product)}
+                                      >
+                                        <div className="flex items-center gap-2 text-blue-900">
+                                          <Droplets className="w-3 h-3" /> {product}
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </section>
     </div>
