@@ -437,7 +437,7 @@ const HomePage = () => {
                     </div>
                     <h4 className="text-2xl font-bold text-blue-900">G Murali</h4>
                     <p className="text-blue-600 font-semibold">Chairman & Managing Director </p>
-                    <Badge className="mt-2 bg-green-500">Since 2020</Badge>
+                    {/* <Badge className="mt-2 bg-green-500">Since 2020</Badge> */}
                   </div>
                   
                   <div className="md:col-span-2 space-y-4">
@@ -445,7 +445,7 @@ const HomePage = () => {
                       G Murali founded CHEMTECH Water Technologies & Solutions (India) Pvt Ltd in 2020 with a vision to revolutionize industrial water and wastewater treatment solutions across India. With extensive experience in water treatment technologies and environmental engineering, he has built CHEMTECH into a trusted name in the industry.
                     </p>
                     
-                    <div className="grid md:grid-cols-2 gap-4 mt-6">
+                    {/* <div className="grid md:grid-cols-2 gap-4 mt-6">
                       <div className="flex items-start gap-3">
                         <Target className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
                         <div>
@@ -460,7 +460,7 @@ const HomePage = () => {
                           <p className="text-sm text-gray-600">50+ successful plant installations</p>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </Card>
