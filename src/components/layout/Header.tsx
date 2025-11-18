@@ -43,7 +43,7 @@ const Header = () => {
             <div className="relative">
               <div className="w-16 h-12 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-blue-500/50 transition-all duration-300 bg-white">
                 <Image
-                  src="/images/cws_logo.png"
+                  src="/images/favicon.ico"
                   alt="Chemtech Logo"
                   width={56}
                   height={42}
