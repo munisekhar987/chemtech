@@ -51,6 +51,8 @@ const FlowchartServicesPage = () => {
       'Bio-Culture': 'bioflocculants-for-secondary-clarification',
       'Aerobic Culture': 'bioflocculants-for-secondary-clarification',
       'Anaerobic Culture': 'bioflocculants-for-secondary-clarification',
+      'Aerobic culture': 'micronutrients-for-aerobic-anaerobic',
+      'Anaerobic culture': 'micronutrients-for-aerobic-anaerobic', 
       'Micronutrients': 'micronutrients-for-aerobic-anaerobic',
       'Biomass Setting Polymers':'Biomass-Setting-Polymers',
 
@@ -137,7 +139,7 @@ const FlowchartServicesPage = () => {
             { id: 'coagulants', title: 'Coagulants', products: ['General Coagulants', 'Chemtech Coagulants'] },
             { id: 'polymers', title: 'Flocculants / Polymers', products: ['Anionic Polymers', 'Calionic Polymers/ Sludge Dewatering Polymers'] },
             { id: 'bioculture', title: 'Bio-Culture', products: ['Aerobic Culture', 'Anaerobic Culture'] },
-            { id: 'micronutrients', title: 'Micronutrients', products: ['Aerobic Culture', 'Aerobic Culture'] },
+            { id: 'micronutrients', title: 'Micronutrients', products: ['Aerobic culture', 'Aerobic culture'] },
              { id: 'Biomass-Setting-Polymers', title: 'Biomass Setting Polymers', products: [] },
             { id: 'defoamers', title: 'Defoamers', products: ['Silica Based Defoamers', 'Non-Silica Defoamers'] }
           ]

@@ -437,7 +437,7 @@ const HomePage = () => {
                     </div>
                     <h4 className="text-2xl font-bold text-blue-900">G Murali</h4>
                     <p className="text-blue-600 font-semibold">Chairman & Managing Director </p>
-                    <Badge className="mt-2 bg-green-500">Since 2020</Badge>
+                    {/* <Badge className="mt-2 bg-green-500">Since 2020</Badge> */}
                   </div>
                   
                   <div className="md:col-span-2 space-y-4">
@@ -445,7 +445,7 @@ const HomePage = () => {
                       G Murali founded CHEMTECH Water Technologies & Solutions (India) Pvt Ltd in 2020 with a vision to revolutionize industrial water and wastewater treatment solutions across India. With extensive experience in water treatment technologies and environmental engineering, he has built CHEMTECH into a trusted name in the industry.
                     </p>
                     
-                    <div className="grid md:grid-cols-2 gap-4 mt-6">
+                    {/* <div className="grid md:grid-cols-2 gap-4 mt-6">
                       <div className="flex items-start gap-3">
                         <Target className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
                         <div>
@@ -460,7 +460,7 @@ const HomePage = () => {
                           <p className="text-sm text-gray-600">50+ successful plant installations</p>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </Card>
@@ -670,8 +670,8 @@ const HomePage = () => {
             <div className="space-y-6 sm:space-y-8 lg:space-y-10">
               <Badge variant="secondary" className="bg-white/10 text-white border-white/20 text-xs sm:text-sm lg:text-base">
                 <Award className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-blue-300" />
-                <span className="hidden md:inline">Pioneering Industrial Water & Waste Water Treatment Solutions Since 2009 </span>
-                <span className="md:hidden">ISO 9001:2015 Since 2009</span>
+                <span className="hidden md:inline">Pioneering Industrial Water & Waste Water Treatment Solutions Since 2020 </span>
+                <span className="md:hidden">ISO 9001:2015 Since 2020</span>
               </Badge>
               
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight">
